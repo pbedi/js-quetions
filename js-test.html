@@ -1,0 +1,105 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+        .starter-template {
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+        </style>
+        <script>
+            function f(input) {  
+                let result = 'f'
+                let cf = (c) => {
+                    if (c) {
+                    return result + c
+                    }
+                    result += 'o'
+
+                    return cf
+                }
+               
+                return cf(input)
+            }
+            function callF(arg) {
+                let ans = f()()()(arg);
+                $('#answer').text(ans);
+            }
+            function callB(arg) {
+                
+                let a = f()();
+                let ans = a()()()(arg);
+
+                $('#answer1').text(ans);
+            }
+            //const concat = a => b => b ? (a + b) : concat(a + "o");
+            //const fun = concat("f");
+            // second answer
+            function getMyObjectCount(str) {
+                var freq = {};
+                str = str.toLowerCase();
+                str = str.replace(/[^a-z]/gi,'');
+
+                for (var i=0; i<str.length;i++) {
+                    var character = str.charAt(i);
+                    if (freq[character]) {
+                    freq[character]++;
+                    } else {
+                    freq[character] = 1;
+                    }
+                }
+                $('#answer2').text(JSON.stringify(freq));
+                 //console.log(freq);
+            };
+        </script>
+        <title>JS Test</title>
+    </head>
+    <body>
+        <main role="main" class="container">
+
+            <div class="starter-template">
+                <h1>JavaScript Question and Answers</h1>
+                <p class="lead">Test 1<br> 
+                    <pre class="text-left">
+                        describe("f", function() {
+                            it("should work", function() {
+                            expect(f("l")).toEqual("fl");
+                            expect(f()("l")).toEqual("fol");
+                            expect(f()()("l")).toEqual("fool");
+                            expect(f()()("t")).toEqual("foot");
+                            expect(f()()()()()("l")).toEqual("foooool");
+                            // And so on such that the number of calls continues
+                            // to increase the number of letter "o" in the string 
+                            // until the function is called with a string.
+                        
+                            // BONUS: also the function should be stateless:
+                            var a = f()();
+                            expect(a("A")).toEqual("fooA");
+                            expect(a()()()("B")).toEqual("foooooB");
+                            expect(a()("C")).toEqual("foooC");
+                            });
+                        });
+                    </pre>
+                    <button class="btn btn-primary mr-3" onclick="callF('l')">Run A</button>
+                    <div id="answer" class="col">Answer will be here for f()()()('f')</div>
+                    
+                    <button class="btn btn-primary" onclick="callB('B')">Run B</button>
+                    <div id="answer1" class="col">Answer will be here for a()()()('B') </div>
+                </p>
+                <p class="lead">Test 2<br>
+                    When pass any string, the function return an object with unique key letters with number of times the letter was present in the string, ignore the numbers and case insnsitive:<br>
+                    getMyObjectCount('You Are an Expert') or getMyObjectCount('me 123 them') 
+                </p>
+                <button class="btn btn-primary mr-3" onclick="getMyObjectCount('You Are an Expert')">Run for "You Are an Expert"</button> <button class="btn btn-primary" onclick="getMyObjectCount('me 123 them')">Run for "me 123 them"</button>
+                    <div id="answer2" class="col">Answer will be here  </div>
+            </div>
+        
+        </main><!-- /.container -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>
