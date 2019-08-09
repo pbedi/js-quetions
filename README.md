@@ -24,3 +24,9 @@ describe("f", function() {
 # Second
 When pass any string, the function return an object with unique key letters with number of times the letter was present in the string, ignore the numbers and case insnsitive:
 getMyObjectCount('You Are an Expert') or getMyObjectCount('me 123 them')
+
+There are two ways to run/ test
+there is an html file js-test.html
+And NodeJS call
+node first-q.js
+node second-q.js
